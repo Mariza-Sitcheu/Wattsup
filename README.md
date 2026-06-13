@@ -23,7 +23,7 @@ Day-ahead power production forecast for two run-of-river hydropower plants on th
 | Unterpreilipp | 10.5 kW | 20.4 kW | **+63%** |
 | Burgau | 6.7 kW | 15.4 kW | **+80%** |
 
-Skill score = how much the model beats the naive "same as yesterday" baseline. Never negative across all 61 test days.
+Skill score = how much the model beats the naive "same as yesterday" baseline (moving average). Never negative across all 61 test days.
 
 ---
 
@@ -153,7 +153,7 @@ Calendar features (hour, minute, weekday, month, season) are derived from the ti
 |---|---|---|
 | Extend river discharge feed (Q_m3s) beyond Jan 2026 | High — Q correlates at r = 0.918 with power; currently NaN for the entire test period | Re-run `fetch_data.py` + `preprocess.py` |
 | Wider weather forecast coverage (rain, upstream precipitation) | Medium — helps anticipate sudden flow events that lag features miss | Add columns to preprocess.py |
-| More weather variables missing gracefully | Low risk — if any weather column is NaN, LightGBM routes it down a learned "missing" branch and keeps predicting; performance drops slightly but the model never crashes | Already handled |
+| More weather variables missing | Low risk — if any weather column is NaN, LightGBM routes it down a learned "missing" branch and keeps predicting; performance drops slightly but the model never crashes | Already handled |
 
 ---
 
