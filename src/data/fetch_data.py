@@ -287,10 +287,4 @@ def fetch_data(
 
     safe_name   = thing["name"].replace("/", "-").replace(" ", "_")
     output_path = f"{output_dir}/{param}_{safe_name}_{freq}.csv"
-    with open(output_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.writer(f)
-        writer.writerow(["phenomenonTime", f"{param}_{unit}"])
-        for obs in observations:
-            writer.writerow([obs["phenomenonTime"], obs["result"]])
-
-    print(f"\nSaved {len(observations)} rows → '{output_path}'")
+    with open(output_path, "w", newline=""
